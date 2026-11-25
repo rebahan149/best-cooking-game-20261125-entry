@@ -39,3 +39,24 @@ writeFileSync(
     game_path_max_bytes: 1000,
   }),
 );
+
+// Sizzle & Stack hands in a small notes file of its own next to the dossier:
+// what the game is, how a shift is scored and which keys drive the kitchen,
+// so a reader of the output folder knows the rules without opening the game.
+const entryNotes = {
+  title: 'Sizzle & Stack — a two-minute diner rush',
+  genre: 'cooking / time-management',
+  shift_seconds: 120,
+  coin_target: 300,
+  scoring:
+    'Serve a plate that matches a ticket layer for layer: base price plus up to 50% patience bonus, times the combo multiplier (1 + 0.25 per consecutive serve, capped at x5). A wrong serve costs 10 points and breaks the combo.',
+  controls: {
+    mouse: 'click an ingredient bin, the grill or the plate to work the line',
+    keys_1_to_8: 'pick an ingredient bin',
+    g: 'take the finished item off the grill',
+    enter_or_space: 'serve the plate',
+    backspace: 'bin the plate and start over',
+    p_or_escape: 'pause',
+  },
+};
+writeFileSync(join(out, 'entry-notes.json'), JSON.stringify(entryNotes, null, 2) + '\n');
